@@ -9,7 +9,9 @@ import diskcache as dc
 
 @pytest.mark.parametrize('min_file_size', [0, 2**20])
 @pytest.mark.parametrize('target', ['key', 'value'])
-def test_jsondisk_rejected_write_preserves_data(tmp_path, min_file_size, target):
+def test_jsondisk_rejected_write_preserves_data(
+    tmp_path, min_file_size, target
+):
     class RejectingJSONDisk(dc.JSONDisk):
         @staticmethod
         def json_dumps(value):
